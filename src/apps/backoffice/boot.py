@@ -1,12 +1,6 @@
-import uvicorn
-from fastapi import FastAPI, APIRouter
-
-from src.apps.backoffice.routes import register_routes
+from src.apps.backoffice.BackofficeServer import BackofficeServer
 
 
 def boot():
-    app: FastAPI = FastAPI()
-    router: APIRouter = APIRouter()
-    register_routes(router)
-    app.include_router(router, prefix='/api/backoffice')
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    server = BackofficeServer()
+    server.run()
