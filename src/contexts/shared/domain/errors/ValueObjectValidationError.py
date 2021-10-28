@@ -1,0 +1,3 @@
+
+class ValueObjectValidationError(BaseException):
+    pass
