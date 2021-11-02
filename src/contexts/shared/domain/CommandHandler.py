@@ -8,7 +8,7 @@ from src.contexts.shared.domain.Interface import Interface
 class CommandHandler(Interface):
 
     @abstractmethod
-    async def subscribed_to(self) -> type:
+    def subscribed_to(self) -> type:
         raise NotImplementedError()
 
     @abstractmethod

@@ -8,7 +8,7 @@ from src.contexts.shared.domain.Query import Query
 class QueryHandler(Interface):
 
     @abstractmethod
-    async def subscribed_to(self) -> type:
+    def subscribed_to(self) -> type:
         raise NotImplementedError()
 
     @abstractmethod
