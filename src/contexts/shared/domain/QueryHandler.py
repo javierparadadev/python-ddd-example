@@ -1,10 +1,11 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Optional, Any
 
+from src.contexts.shared.domain.Interface import Interface
 from src.contexts.shared.domain.Query import Query
 
 
-class QueryBus(ABC):
+class QueryBus(Interface):
 
     @abstractmethod
     async def subscribed_to(self) -> type:

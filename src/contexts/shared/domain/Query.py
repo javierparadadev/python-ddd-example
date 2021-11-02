@@ -1,5 +1,5 @@
-from abc import ABC
+from src.contexts.shared.domain.Interface import Interface
 
 
-class Query(ABC):
+class Query(Interface):
     pass
