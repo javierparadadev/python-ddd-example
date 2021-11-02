@@ -1,3 +1,5 @@
+from abc import ABC
 
-class Query:
+
+class Query(ABC):
     pass
