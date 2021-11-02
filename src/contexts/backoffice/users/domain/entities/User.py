@@ -2,7 +2,7 @@ from typing import Optional, Dict, List
 
 from src.contexts.backoffice.users.domain.entities.UserId import UserId
 from src.contexts.backoffice.users.domain.entities.UserName import UserName
-from src.contexts.shared.domain.value_obj.AggregateRoot import AggregateRoot
+from src.contexts.shared.domain.valueobj.AggregateRoot import AggregateRoot
 
 
 class User(AggregateRoot):

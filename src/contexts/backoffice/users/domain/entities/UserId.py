@@ -1,4 +1,4 @@
-from src.contexts.shared.domain.value_obj.ValueObject import ValueObject
+from src.contexts.shared.domain.valueobj.ValueObject import ValueObject
 
 
 class UserId(ValueObject):
