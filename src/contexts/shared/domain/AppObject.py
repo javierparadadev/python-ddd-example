@@ -1,2 +1,0 @@
-class AppObject:
-    pass
