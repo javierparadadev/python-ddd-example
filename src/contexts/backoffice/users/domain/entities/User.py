@@ -7,8 +7,9 @@ from src.contexts.shared.domain.valueobj.AggregateRoot import AggregateRoot
 
 class User(AggregateRoot):
 
-    def __init__(self, id: UserId, name: UserName):
-        self.id = id
+    def __init__(self, user_id: UserId, name: UserName):
+        super().__init__()
+        self.id = user_id
         self.name = name
 
     def to_primitives(self) -> Optional[Dict, List]:
