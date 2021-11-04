@@ -1,5 +1,5 @@
-from src.contexts.backoffice.users.application.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
-from src.contexts.backoffice.users.application.UsersByCriteriaFinder import UsersByCriteriaFinder
+from src.contexts.backoffice.users.application.queries.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
+from src.contexts.backoffice.users.application.usecases.UsersByCriteriaFinder import UsersByCriteriaFinder
 from src.contexts.shared.domain.criteria.Criteria import Criteria
 
 

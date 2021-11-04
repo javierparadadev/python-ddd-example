@@ -22,5 +22,8 @@ class PyMongoRepository(ABC):
     def _find_one(self, raw_query: Dict[str, Any]) -> Any:
         return self._collection.find_one(raw_query)
 
+    def _find_many(self, raw_query: Dict[str, Any]) -> Any:
+        return self._collection.find(raw_query)
+
     def _create_one(self, raw_obj: Dict[str, Any]) -> Any:
         self._collection.insert_one(raw_obj)
