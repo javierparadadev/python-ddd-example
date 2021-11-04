@@ -20,4 +20,4 @@ class UserGetController(BackofficeController):
     async def run(self, req: Request) -> JSONResponse:
         query: Query = FindUsersByCriteriaQuery(dict(req.query_params))
         res: Response = await self.__query_bus.ask(query)
-        return JSONResponse(status_code=HTTPStatus.OK, content=res.to_json())
+        return JSONResponse(status_code=HTTPStatus.OK, content=res.to_primitives())

@@ -9,6 +9,6 @@ class BackofficeUsersResponse(Response):
     def __init__(self, users: List[User]):
         self.__users = users
 
-    def to_json(self) -> Any:
+    def to_primitives(self) -> Any:
         json_users = [user.to_primitives() for user in self.__users]
         return json_users
