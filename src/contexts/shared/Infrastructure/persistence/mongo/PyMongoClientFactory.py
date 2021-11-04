@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Optional
 
 from pymongo import MongoClient
 
@@ -18,11 +18,13 @@ class PyMongoClientFactory:
         PyMongoClientFactory.__clients[context_name] = client
 
     @staticmethod
-    def create_instance(context_name: str, config: PyMongoConfiguration):
+    def create_instance(context_name: str, config: Optional[PyMongoConfiguration] = None):
         client = PyMongoClientFactory.__get_client(context_name)
         if client is not None:
             return client
 
-        client = MongoClient()
+        if config is None:
+            config = PyMongoConfiguration()
+        client = config.create_client_from_config()
         PyMongoClientFactory.__add_client(context_name, client)
         return client
