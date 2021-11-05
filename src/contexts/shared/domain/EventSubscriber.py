@@ -8,7 +8,7 @@ from src.contexts.shared.domain.Interface import Interface
 class EventSubscriber(Interface):
 
     @abstractmethod
-    def subscribed_to(self) -> List[type]:
+    def subscribed_to(self) -> List[str]:
         raise NotImplementedError()
 
     @abstractmethod

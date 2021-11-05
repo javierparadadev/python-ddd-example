@@ -23,5 +23,9 @@ class DomainEvent(ABC):
             self.occurred_on = self.created_at
 
     @abstractmethod
+    def get_event_type_name(self):
+        raise NotImplementedError()
+
+    @abstractmethod
     def to_primitives(self):
         raise NotImplementedError()
