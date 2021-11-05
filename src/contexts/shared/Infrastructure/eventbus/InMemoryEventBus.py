@@ -25,8 +25,11 @@ class InMemoryEventBus(BaseObject, EventBus):
 
     def add_subscribers(self, subscribers: List[EventSubscriber]):
         for subscriber in subscribers:
-            event_types = subscriber.subscribed_to()
-            for event_type in event_types:
-                if event_type not in self.__subscriptions:
-                    self.__subscriptions[event_type] = []
-                self.__subscriptions[event_type].append(subscriber)
+            self.add_subscriber(subscriber)
+
+    def add_subscriber(self, subscriber: EventSubscriber):
+        event_types = subscriber.subscribed_to()
+        for event_type in event_types:
+            if event_type not in self.__subscriptions:
+                self.__subscriptions[event_type] = []
+            self.__subscriptions[event_type].append(subscriber)
