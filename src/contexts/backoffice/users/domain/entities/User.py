@@ -1,4 +1,4 @@
-from typing import Optional, Dict, List
+from typing import Optional, Dict, List, Union
 
 from src.contexts.backoffice.users.domain.entities.UserId import UserId
 from src.contexts.backoffice.users.domain.entities.UserName import UserName
@@ -12,7 +12,7 @@ class User(AggregateRoot):
         self.id = user_id
         self.name = name
 
-    def to_primitives(self) -> Optional[Dict, List]:
+    def to_primitives(self) -> Union[Dict, List]:
         return {
             'id': self.id,
             'name': self.name,

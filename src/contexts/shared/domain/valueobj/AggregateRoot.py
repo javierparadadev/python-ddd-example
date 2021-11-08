@@ -1,5 +1,5 @@
 from abc import abstractmethod, ABC
-from typing import Optional, Dict, List
+from typing import Optional, Dict, List, Union
 
 
 class AggregateRoot(ABC):
@@ -8,5 +8,5 @@ class AggregateRoot(ABC):
         pass
 
     @abstractmethod
-    def to_primitives(self) -> Optional[Dict, List]:
+    def to_primitives(self) -> Union[Dict, List]:
         raise NotImplementedError()
