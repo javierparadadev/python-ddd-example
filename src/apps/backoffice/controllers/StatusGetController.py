@@ -8,7 +8,7 @@ from src.apps.backoffice.controllers.BackofficeController import BackofficeContr
 class StatusGetController(BackofficeController):
 
     def __init__(self):
-        print('miau')
+        pass
 
     async def run(self, req: Request) -> JSONResponse:
         return JSONResponse(status_code=HTTPStatus.OK)

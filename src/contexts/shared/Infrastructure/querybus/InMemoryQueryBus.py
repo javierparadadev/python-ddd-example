@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from src.contexts.shared.domain.BaseObject import BaseObject
 from src.contexts.shared.domain.Query import Query
@@ -9,8 +9,11 @@ from src.contexts.shared.domain.errors.QueryNoRegisteredError import QueryNotReg
 
 class InMemoryQueryBus(BaseObject, QueryBus):
 
-    def __init__(self):
-        self.__handler_mapping: Dict[str, QueryHandler] = {}
+    def __init__(self, *handlers: QueryHandler):
+        handler_mapping = {}
+        for handler in handlers:
+            handler_mapping[handler.subscribed_to()] = handler
+        self.__handler_mapping: Dict[str, QueryHandler] = handler_mapping
 
     def __search(self, query_name: str):
         if query_name not in self.__handler_mapping:

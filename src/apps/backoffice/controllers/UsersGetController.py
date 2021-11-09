@@ -9,7 +9,7 @@ from src.contexts.shared.domain.Query import Query
 from src.contexts.shared.domain.QueryBus import QueryBus
 
 
-class UserGetController(BackofficeController):
+class UsersGetController(BackofficeController):
 
     def __init__(
             self,
