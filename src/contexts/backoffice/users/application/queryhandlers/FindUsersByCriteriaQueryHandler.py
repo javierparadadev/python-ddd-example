@@ -1,5 +1,6 @@
 from typing import List
 
+from src.contexts.backoffice.users.application.BackofficeUsersResponse import BackofficeUsersResponse
 from src.contexts.backoffice.users.application.queries.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
 from src.contexts.backoffice.users.application.usecases.UsersByCriteriaFinder import UsersByCriteriaFinder
 from src.contexts.shared.domain.QueryBus import QueryBus
@@ -17,7 +18,7 @@ class FindUsersByCriteriaQueryHandler(QueryHandler):
     def subscribed_to(self) -> str:
         return self.__subscription
 
-    async def handle(self, query: FindUsersByCriteriaQuery):
+    async def handle(self, query: FindUsersByCriteriaQuery) -> BackofficeUsersResponse:
         raw_criteria = query.raw_criteria  # TODO: build criteria from raw
         criteria: Criteria = Criteria()
-        await self.__finder.run(criteria)
+        return await self.__finder.run(criteria)
