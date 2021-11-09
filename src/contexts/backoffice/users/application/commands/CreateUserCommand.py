@@ -1,7 +1,8 @@
+from src.contexts.shared.domain.BaseObject import BaseObject
 from src.contexts.shared.domain.Command import Command
 
 
-class CreateUserCommand(Command):
+class CreateUserCommand(BaseObject, Command):
 
     COMMAND_TYPE: str = 'create-user'
 

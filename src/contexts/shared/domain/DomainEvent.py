@@ -1,7 +1,7 @@
 import uuid
 from abc import ABC, abstractmethod
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Any
 
 
 class DomainEvent(ABC):
@@ -22,10 +22,9 @@ class DomainEvent(ABC):
         if self.occurred_on is None:
             self.occurred_on = self.created_at
 
-    @abstractmethod
-    def get_event_type_name(self):
-        raise NotImplementedError()
+    def get_event_type_name(self) -> str:
+        return self.name
 
     @abstractmethod
-    def to_primitives(self):
+    def to_primitives(self) -> Any:
         raise NotImplementedError()
