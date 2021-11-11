@@ -1,6 +1,6 @@
 from typing import List, NoReturn
 
-from pymongo import MongoClient
+from pymongo import MongoClient, ASCENDING
 
 from src.contexts.backoffice.users.domain.BackofficeUserRepository import BackofficeUserRepository
 from src.contexts.backoffice.users.domain.entities.User import User
@@ -15,6 +15,9 @@ class PyMongoBackofficeUserRepository(PyMongoRepository, BackofficeUserRepositor
 
     def __init__(self, client: MongoClient):
         super().__init__(client)
+        super()._get_collection().create_index([
+            ('id', ASCENDING)
+        ], unique=True)
 
     def get_database_name(self):
         return self.__DATABASE_NAME

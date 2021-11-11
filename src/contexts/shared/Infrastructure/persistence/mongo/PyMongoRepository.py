@@ -19,6 +19,9 @@ class PyMongoRepository(ABC):
     def get_collection_name(self):
         raise NotImplementedError()
 
+    def _get_collection(self):
+        return self._collection
+
     async def _find_one(self, raw_query: Dict[str, Any]) -> Any:
         return self._collection.find_one(raw_query)
 
