@@ -6,3 +6,5 @@ class Response(ABC):
     @abstractmethod
     def to_primitives(self):
         raise NotImplementedError()
+
+

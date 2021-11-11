@@ -1,9 +1,11 @@
 from typing import List, NoReturn
 
 from pymongo import MongoClient, ASCENDING
+from pymongo.errors import DuplicateKeyError
 
 from src.contexts.backoffice.users.domain.BackofficeUserRepository import BackofficeUserRepository
 from src.contexts.backoffice.users.domain.entities.User import User
+from src.contexts.backoffice.users.domain.errors.UserAlreadyExistsError import UserAlreadyExistsError
 from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoRepository import PyMongoRepository
 from src.contexts.shared.domain.criteria.Criteria import Criteria
 
@@ -31,4 +33,8 @@ class PyMongoBackofficeUserRepository(PyMongoRepository, BackofficeUserRepositor
         return entities
 
     async def create_one(self, user: User) -> NoReturn:
-        return await super()._create_one(user.to_primitives())
+        try:
+            user = await super()._create_one(user.to_primitives())
+            return user
+        except DuplicateKeyError as e:
+            raise UserAlreadyExistsError('User with ID <{}> already exists.'.format(user.id.value()))

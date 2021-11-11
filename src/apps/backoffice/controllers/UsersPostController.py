@@ -6,6 +6,8 @@ from http import HTTPStatus
 
 from src.apps.backoffice.controllers.BackofficeController import BackofficeController
 from src.contexts.backoffice.users.application.commands.CreateUserCommand import CreateUserCommand
+from src.contexts.backoffice.users.domain.errors.UserAlreadyExistsError import UserAlreadyExistsError
+from src.contexts.backoffice.users.domain.errors.UserInvalidValueError import UserInvalidValueError
 from src.contexts.shared.domain.CommandBus import CommandBus
 
 
@@ -20,5 +22,11 @@ class UsersPostController(BackofficeController):
     async def run(self, req: Request) -> JSONResponse:
         body: Dict[str, Any] = await req.json()
         command: CreateUserCommand = CreateUserCommand(body['id'], body['name'])
-        await self.__command_bus.dispatch(command)
+        try:
+            await self.__command_bus.dispatch(command)
+        except UserAlreadyExistsError as err:
+            return JSONResponse(status_code=HTTPStatus.CONFLICT, content=err.to_primitives())
+        except UserInvalidValueError as err:
+            return JSONResponse(status_code=HTTPStatus.BAD_REQUEST, content=err.to_primitives())
+
         return JSONResponse(status_code=HTTPStatus.CREATED)
