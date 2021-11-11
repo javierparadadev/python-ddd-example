@@ -11,8 +11,8 @@ class UserCreatedDomainEvent(DomainEvent):
     def __init__(
             self,
             aggregate_id: str,
-            event_id: Optional[str],
-            occurred_on: Optional[datetime],
+            event_id: Optional[str] = None,
+            occurred_on: Optional[datetime] = None,
     ):
         super().__init__(self.EVENT_TYPE, aggregate_id, event_id, occurred_on)
 

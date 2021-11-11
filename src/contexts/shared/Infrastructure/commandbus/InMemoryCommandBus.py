@@ -4,17 +4,16 @@ from src.contexts.shared.domain.BaseObject import BaseObject
 from src.contexts.shared.domain.Command import Command
 from src.contexts.shared.domain.CommandBus import CommandBus
 from src.contexts.shared.domain.CommandHandler import CommandHandler
-from src.contexts.shared.domain.Query import Query
-from src.contexts.shared.domain.QueryBus import QueryBus
-from src.contexts.shared.domain.QueryHandler import QueryHandler
 from src.contexts.shared.domain.errors.CommandNoRegisteredError import CommandNotRegisteredError
-from src.contexts.shared.domain.errors.QueryNoRegisteredError import QueryNotRegisteredError
 
 
 class InMemoryCommandBus(BaseObject, CommandBus):
 
-    def __init__(self):
-        self.__handler_mapping: Dict[str, CommandHandler] = {}
+    def __init__(self, *handlers: CommandHandler):
+        handler_mapping = {}
+        for handler in handlers:
+            handler_mapping[handler.subscribed_to()] = handler
+        self.__handler_mapping: Dict[str, CommandHandler] = handler_mapping
 
     def __search(self, command_name: str):
         if command_name not in self.__handler_mapping:

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, NoReturn
 
 from pymongo import MongoClient
 
@@ -23,4 +23,9 @@ class PyMongoBackofficeUserRepository(PyMongoRepository, BackofficeUserRepositor
         return self.__COLLECTION_NAME
 
     async def find_by_criteria(self, criteria: Criteria) -> List[User]:
-        return await super()._find_many({})
+        results = await super()._find_many({})
+        entities = [User.create_from_primitives(result) for result in results]
+        return entities
+
+    async def create_one(self, user: User) -> NoReturn:
+        return await super()._create_one(user.to_primitives())
