@@ -17,3 +17,4 @@ class BackofficeUsersResponse(Response):
         }
         if self.__meta:
             response['meta'] = self.__meta
+        return response
