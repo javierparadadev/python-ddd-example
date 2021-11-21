@@ -19,6 +19,5 @@ class FindUsersByCriteriaQueryHandler(QueryHandler):
         return self.__subscription
 
     async def handle(self, query: FindUsersByCriteriaQuery) -> BackofficeUsersResponse:
-        raw_criteria = query.raw_criteria  # TODO: build criteria from raw
-        criteria: Criteria = Criteria()
+        criteria = Criteria(query.filters)
         return await self.__finder.run(criteria)

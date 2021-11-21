@@ -3,6 +3,10 @@ from typing import Any, Dict
 
 from pymongo import MongoClient
 
+from src.contexts.shared.Infrastructure.persistence.mongo.parse_criteria_to_mongo_query import \
+    parse_criteria_to_mongo_query
+from src.contexts.shared.domain.criteria.Criteria import Criteria
+
 
 class PyMongoRepository(ABC):
 
@@ -29,6 +33,10 @@ class PyMongoRepository(ABC):
         cursor = self._collection.find(raw_query)
         data = list(cursor)
         return data
+
+    async def _find_by_criteria(self, criteria: Criteria) -> Any:
+        raw_query = parse_criteria_to_mongo_query(criteria)
+        return await self._find_many(raw_query)
 
     async def _create_one(self, raw_obj: Dict[str, Any]) -> Any:
         self._collection.insert_one(raw_obj)
