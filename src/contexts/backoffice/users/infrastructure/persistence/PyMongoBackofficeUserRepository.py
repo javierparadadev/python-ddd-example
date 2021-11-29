@@ -3,14 +3,14 @@ from typing import List, NoReturn
 from pymongo import MongoClient, ASCENDING
 from pymongo.errors import DuplicateKeyError
 
-from src.contexts.backoffice.users.domain.BackofficeUserRepository import BackofficeUserRepository
+from src.contexts.backoffice.users.domain.UserRepository import UserRepository
 from src.contexts.backoffice.users.domain.entities.User import User
 from src.contexts.backoffice.users.domain.errors.UserAlreadyExistsError import UserAlreadyExistsError
 from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoRepository import PyMongoRepository
 from src.contexts.shared.domain.criteria.Criteria import Criteria
 
 
-class PyMongoBackofficeUserRepository(PyMongoRepository, BackofficeUserRepository):
+class PyMongoUserRepository(PyMongoRepository, UserRepository):
 
     __COLLECTION_NAME = 'users'
     __DATABASE_NAME = 'backoffice'

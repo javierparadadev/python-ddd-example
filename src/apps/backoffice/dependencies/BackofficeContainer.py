@@ -9,7 +9,7 @@ from src.contexts.backoffice.users.application.queryhandlers.FindUsersByCriteria
 from src.contexts.backoffice.users.application.usecases.UserCreator import UserCreator
 from src.contexts.backoffice.users.application.usecases.UsersByCriteriaFinder import UsersByCriteriaFinder
 from src.contexts.backoffice.users.infrastructure.persistence.PyMongoBackofficeUserRepository import \
-    PyMongoBackofficeUserRepository
+    PyMongoUserRepository
 from src.contexts.backoffice.users.infrastructure.persistence.config.PyMongoUserConfigFactory import PyMongoUserConfigFactory
 from src.contexts.shared.Infrastructure.commandbus.InMemoryCommandBus import InMemoryCommandBus
 from src.contexts.shared.Infrastructure.eventbus.InMemoryEventBus import InMemoryEventBus
@@ -26,7 +26,7 @@ class BackofficeContainer(containers.DeclarativeContainer):
     db_config = providers.Singleton(PyMongoUserConfigFactory.create)
     db_client = providers.Singleton(PyMongoClientFactory.create_instance, 'backoffice', db_config)
 
-    user_repository = providers.Singleton(PyMongoBackofficeUserRepository, db_client)
+    user_repository = providers.Singleton(PyMongoUserRepository, db_client)
 
     users_by_criteria_finder = providers.Singleton(UsersByCriteriaFinder, user_repository)
     find_users_by_criteria_query_handler = providers.Singleton(
