@@ -1,5 +1,7 @@
+import io
+import json
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, Optional, NoReturn
 
 from minio import Minio
 
@@ -17,5 +19,34 @@ class MinioRepository(ABC):
     def get_directory_name(self):
         raise NotImplementedError()
 
-    def _create(self, obj_id: str, obj: Any, file_extension: str = None):
-        pass
+    def _find_one(self, obj_id: str, file_extension: str = None, parse_callback=None) -> Any:
+        file_name = obj_id
+        if file_extension is not None:
+            file_name = f'{file_name}.{file_extension}'
+        bucket_name = self.get_bucket_name()
+
+        response = self.__client.get_object(bucket_name, file_name)
+        encoded_data = io.BytesIO(response.read()).getvalue()
+        decoded_data = encoded_data.decode('utf-8')
+        if parse_callback is not None:
+            decoded_data = parse_callback(decoded_data)
+        return decoded_data
+
+    def _create(self, obj_id: str, obj: Any, file_extension: str = None) -> NoReturn:
+        content: Optional[str] = None
+        if isinstance(obj, str):
+            content = obj
+        if isinstance(obj, int) or isinstance(obj, float) or isinstance(obj, int):
+            content = str(obj)
+        if isinstance(obj, list) or isinstance(obj, dict):
+            content = json.dumps(obj)
+        if content is None:
+            raise NotImplementedError('Not implementd error to raise')  # TODO: add custom error
+
+        file_name = obj_id
+        if file_extension is not None:
+            file_name = f'{file_name}.{file_extension}'
+        bucket_name = self.get_bucket_name()
+        encoded_content = content.encode('utf-8')
+        to_stream_content = io.BytesIO(encoded_content)
+        self.__client.put_object(bucket_name, file_name, to_stream_content, len(encoded_content))
