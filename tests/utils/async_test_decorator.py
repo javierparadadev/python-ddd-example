@@ -8,5 +8,4 @@ def async_test(coro):
             return loop.run_until_complete(coro(*args, **kwargs))
         finally:
             loop.close()
-
     return wrapper

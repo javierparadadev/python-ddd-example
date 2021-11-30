@@ -18,7 +18,7 @@ class TestUserCreator(unittest.TestCase):
     @async_test
     async def test_create_user(self):
         """
-        Creates a user
+        Creates user
         """
         user_id = UserId('abc')
         user_name = UserName('The Abc User')
