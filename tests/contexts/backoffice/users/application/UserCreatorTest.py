@@ -1,11 +1,12 @@
 import unittest
 
 from src.contexts.backoffice.users.application.usecases.UserCreator import UserCreator
-from src.contexts.backoffice.users.domain.entities.UserId import UserId
-from src.contexts.backoffice.users.domain.entities.UserName import UserName
+from src.contexts.backoffice.users.domain.entities.User import User
 from tests.contexts.backoffice.users.__mocks__.EventBusMock import EventBusMock
 from tests.contexts.backoffice.users.__mocks__.UserRepositoryMock import UserRepositoryMock
 from tests.utils.async_test_decorator import async_test
+
+from tests.contexts.backoffice.users.__mothers__.UserMother import UserMother
 
 
 class TestUserCreator(unittest.TestCase):
@@ -20,10 +21,9 @@ class TestUserCreator(unittest.TestCase):
         """
         Creates user
         """
-        user_id = UserId('abc')
-        user_name = UserName('The Abc User')
-        await self.user_creator.run(user_id, user_name)
-        self.mocked_repo.assert_create_one_has_been_called()
+        user: User = UserMother.random()
+        await self.user_creator.run(user.id, user.name)
+        self.mocked_repo.assert_create_one_has_been_called_with(user)
 
 
 if __name__ == '__main__':
