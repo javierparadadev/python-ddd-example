@@ -1,5 +1,5 @@
 from typing import NoReturn, List, Any
-from unittest.mock import Mock
+from unittest.mock import Mock, MagicMock
 
 from src.contexts.backoffice.users.domain.UserRepository import UserRepository
 from src.contexts.backoffice.users.domain.entities.User import User
@@ -11,7 +11,7 @@ from tests.contexts.backoffice.users.__matchers__.UserMatcher import UserMatcher
 class UserRepositoryMock(BaseObject, UserRepository):
 
     def __init__(self):
-        self.__create_one_mock = Mock()
+        self.__create_one_mock = MagicMock()
 
     async def find_by_criteria(self, criteria: Criteria) -> List[User]:
         raise NotImplementedError()
@@ -28,4 +28,4 @@ class UserRepositoryMock(BaseObject, UserRepository):
 
     def assert_create_one_has_been_called_with(self, user: User):
         user_matcher = UserMatcher(user)
-        assert self.__create_one_mock.assert_called_with(user_matcher)
+        self.__create_one_mock.assert_called_with(user_matcher)
