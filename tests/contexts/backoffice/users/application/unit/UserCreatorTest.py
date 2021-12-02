@@ -19,7 +19,7 @@ class TestUserCreator(unittest.TestCase):
     @async_test
     async def test_create_user(self):
         """
-        Creates user
+        Creates user.
         """
         user: User = UserMother.random()
         await self.user_creator.run(user.id, user.name)

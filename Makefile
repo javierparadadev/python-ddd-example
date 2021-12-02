@@ -13,3 +13,8 @@ deps:
 .PHONY = test
 test:
 	python3 -m unittest discover -s ./tests -p '*Test.py'
+
+# Run full app
+.PHONY = run
+run:
+	python3 main.py
