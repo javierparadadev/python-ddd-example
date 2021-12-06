@@ -7,8 +7,5 @@ from src.contexts.shared.domain.criteria.Criteria import Criteria
 
 class PhotoRepository(ABC):
 
-    async def find_by_criteria(self, criteria: Criteria) -> List[Photo]:
-        raise NotImplementedError()
-
     async def create_one(self, photo: Photo) -> NoReturn:
         raise NotImplementedError()

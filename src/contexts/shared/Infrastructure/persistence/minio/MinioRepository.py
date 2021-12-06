@@ -19,11 +19,20 @@ class MinioRepository(ABC):
     def get_directory_name(self):
         raise NotImplementedError()
 
-    def _find_one(self, obj_id: str, file_extension: str = None, parse_callback=None) -> Any:
+    def _find_one(
+            self,
+            obj_id: str,
+            file_extension: str = None,
+            parse_callback=None,
+            directory_name: str = None,
+    ) -> Any:
         file_name = obj_id
         if file_extension is not None:
             file_name = f'{file_name}.{file_extension}'
         bucket_name = self.get_bucket_name()
+
+        if directory_name is None:
+            directory_name = self.get_directory_name()
 
         response = self.__client.get_object(bucket_name, file_name)
         encoded_data = io.BytesIO(response.read()).getvalue()
@@ -32,7 +41,13 @@ class MinioRepository(ABC):
             decoded_data = parse_callback(decoded_data)
         return decoded_data
 
-    def _create(self, obj_id: str, obj: Any, file_extension: str = None) -> NoReturn:
+    def _create(
+            self,
+            obj_id: str,
+            obj: Any,
+            file_extension: str = None,
+            directory_name: str = None,
+    ) -> NoReturn:
         content: Optional[str] = None
         if isinstance(obj, str):
             content = obj
@@ -46,6 +61,10 @@ class MinioRepository(ABC):
         file_name = obj_id
         if file_extension is not None:
             file_name = f'{file_name}.{file_extension}'
+
+        if directory_name is None:
+            directory_name = self.get_directory_name()
+
         bucket_name = self.get_bucket_name()
         encoded_content = content.encode('utf-8')
         to_stream_content = io.BytesIO(encoded_content)
