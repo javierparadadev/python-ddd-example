@@ -4,9 +4,9 @@ from typing import Any, Optional
 from src.contexts.shared.domain.DomainEvent import DomainEvent
 
 
-class UserCreatedDomainEvent(DomainEvent):
+class PhotoCreatedDomainEvent(DomainEvent):
 
-    EVENT_TYPE = 'backoffice-user-created'
+    EVENT_TYPE = 'photostore-photo-created'
 
     def __init__(
             self,
@@ -18,9 +18,9 @@ class UserCreatedDomainEvent(DomainEvent):
 
     def to_primitives(self) -> Any:
         return {
-            'user-id': self.aggregate_id,
-            'event-id': self.id,
+            'aggregate-id': self.aggregate_id,
+            'id': self.id,
             'occurred-on': self.occurred_on,
             'created-at': self.created_at,
-            'type': UserCreatedDomainEvent.EVENT_TYPE,
+            'type': PhotoCreatedDomainEvent.EVENT_TYPE,
         }
