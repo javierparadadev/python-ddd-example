@@ -5,7 +5,7 @@ from starlette.responses import JSONResponse
 from http import HTTPStatus
 
 from src.apps.backoffice.controllers.BackofficeController import BackofficeController
-from src.contexts.backoffice.users.application.createone.CreateUserCommand import CreateUserCommand
+from src.contexts.backoffice.users.application.createone.CreateUserCommand import CreatePhotoCommand
 from src.contexts.backoffice.users.infrastructure.JsonResponseErrorHandler import JsonResponseErrorHandler
 from src.contexts.shared.domain.CommandBus import CommandBus
 from src.contexts.shared.domain.errors.DomainError import DomainError
@@ -22,7 +22,7 @@ class UsersPostController(BackofficeController):
 
     async def run(self, req: Request) -> JSONResponse:
         body: Dict[str, Any] = await req.json()
-        command: CreateUserCommand = CreateUserCommand(body['id'], body['name'])
+        command: CreatePhotoCommand = CreatePhotoCommand(body['id'], body['name'])
         try:
             await self.__command_bus.dispatch(command)
         except DomainError as err:
