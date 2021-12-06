@@ -5,7 +5,7 @@ from starlette.responses import JSONResponse
 from http import HTTPStatus
 
 from src.apps.backoffice.controllers.BackofficeController import BackofficeController
-from src.contexts.backoffice.users.application.commands.CreateUserCommand import CreateUserCommand
+from src.contexts.backoffice.users.application.createone.CreateUserCommand import CreateUserCommand
 from src.contexts.backoffice.users.infrastructure.JsonResponseErrorHandler import JsonResponseErrorHandler
 from src.contexts.shared.domain.CommandBus import CommandBus
 from src.contexts.shared.domain.errors.DomainError import DomainError

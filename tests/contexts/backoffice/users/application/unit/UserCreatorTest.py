@@ -1,6 +1,6 @@
 import unittest
 
-from src.contexts.backoffice.users.application.usecases.UserCreator import UserCreator
+from src.contexts.backoffice.users.application.createone.UserCreator import UserCreator
 from src.contexts.backoffice.users.domain.entities.User import User
 from tests.contexts.backoffice.users.__mocks__.EventBusMock import EventBusMock
 from tests.contexts.backoffice.users.__mocks__.UserRepositoryMock import UserRepositoryMock

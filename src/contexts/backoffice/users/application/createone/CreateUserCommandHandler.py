@@ -1,12 +1,10 @@
-from typing import Any, NoReturn
+from typing import NoReturn
 
-from src.contexts.backoffice.users.application.commands.CreateUserCommand import CreateUserCommand
-from src.contexts.backoffice.users.application.usecases.UserCreator import UserCreator
-from src.contexts.backoffice.users.domain.entities.User import User
+from src.contexts.backoffice.users.application.createone.CreateUserCommand import CreateUserCommand
+from src.contexts.backoffice.users.application.createone.UserCreator import UserCreator
 from src.contexts.backoffice.users.domain.entities.UserId import UserId
 from src.contexts.backoffice.users.domain.entities.UserName import UserName
 from src.contexts.shared.domain.BaseObject import BaseObject
-from src.contexts.shared.domain.Command import Command
 from src.contexts.shared.domain.CommandHandler import CommandHandler
 
 

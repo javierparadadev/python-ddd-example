@@ -3,7 +3,7 @@ from starlette.responses import JSONResponse
 from http import HTTPStatus
 
 from src.apps.backoffice.controllers.BackofficeController import BackofficeController
-from src.contexts.backoffice.users.application.queries.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
+from src.contexts.backoffice.users.application.findall.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
 from src.contexts.shared.Infrastructure.parsers.parse_dict_format_to_criteria import parse_dict_to_criteria
 from src.contexts.shared.application.Response import Response
 from src.contexts.shared.domain.Query import Query

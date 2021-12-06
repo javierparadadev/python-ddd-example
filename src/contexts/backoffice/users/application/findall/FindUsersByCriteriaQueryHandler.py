@@ -1,9 +1,6 @@
-from typing import List
-
 from src.contexts.backoffice.users.application.BackofficeUsersResponse import BackofficeUsersResponse
-from src.contexts.backoffice.users.application.queries.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
-from src.contexts.backoffice.users.application.usecases.UsersByCriteriaFinder import UsersByCriteriaFinder
-from src.contexts.shared.domain.QueryBus import QueryBus
+from src.contexts.backoffice.users.application.findall.FindUsersByCriteriaQuery import FindUsersByCriteriaQuery
+from src.contexts.backoffice.users.application.findall.UsersByCriteriaFinder import UsersByCriteriaFinder
 from src.contexts.shared.domain.QueryHandler import QueryHandler
 from src.contexts.shared.domain.criteria.Criteria import Criteria
 

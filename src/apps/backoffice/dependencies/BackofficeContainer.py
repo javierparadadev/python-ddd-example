@@ -3,11 +3,11 @@ from dependency_injector import containers, providers
 from src.apps.backoffice.controllers.StatusGetController import StatusGetController
 from src.apps.backoffice.controllers.UsersGetController import UsersGetController
 from src.apps.backoffice.controllers.UsersPostController import UsersPostController
-from src.contexts.backoffice.users.application.commandhandlers.CreateUserCommandHandler import CreateUserCommandHandler
-from src.contexts.backoffice.users.application.queryhandlers.FindUsersByCriteriaQueryHandler import \
+from src.contexts.backoffice.users.application.createone.CreateUserCommandHandler import CreateUserCommandHandler
+from src.contexts.backoffice.users.application.findall.FindUsersByCriteriaQueryHandler import \
     FindUsersByCriteriaQueryHandler
-from src.contexts.backoffice.users.application.usecases.UserCreator import UserCreator
-from src.contexts.backoffice.users.application.usecases.UsersByCriteriaFinder import UsersByCriteriaFinder
+from src.contexts.backoffice.users.application.createone.UserCreator import UserCreator
+from src.contexts.backoffice.users.application.findall.UsersByCriteriaFinder import UsersByCriteriaFinder
 from src.contexts.backoffice.users.infrastructure.persistence.PyMongoBackofficeUserRepository import \
     PyMongoUserRepository
 from src.contexts.backoffice.users.infrastructure.persistence.config.PyMongoUserConfigFactory import PyMongoUserConfigFactory

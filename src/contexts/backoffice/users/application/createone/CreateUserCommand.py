@@ -4,7 +4,7 @@ from src.contexts.shared.domain.Command import Command
 
 class CreateUserCommand(BaseObject, Command):
 
-    COMMAND_TYPE: str = 'create-user'
+    COMMAND_TYPE: str = 'createone-user'
 
     def __init__(self, user_id: str, name: str):
         self.id = user_id
