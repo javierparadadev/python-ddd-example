@@ -4,4 +4,5 @@ Example of a Python & FastAPI application using Domain-Driven Design and Command
 
 Based on [typescript-ddd-skeleton](https://github.com/CodelyTV/typescript-ddd-skeleton) project from [CodelyTV](https://github.com/CodelyTV).
 
+Project following [python-ddd-skeleton](https://github.com/parada3desu/python-ddd-skeleton) template.
 
