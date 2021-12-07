@@ -1,4 +1,4 @@
-from typing import List, NoReturn
+from typing import List, NoReturn, Tuple, Optional
 
 from pymongo import MongoClient, ASCENDING
 from pymongo.errors import DuplicateKeyError
@@ -7,6 +7,7 @@ from src.contexts.backoffice.users.domain.UserRepository import UserRepository
 from src.contexts.backoffice.users.domain.entities.User import User
 from src.contexts.backoffice.users.domain.errors.UserAlreadyExistsError import UserAlreadyExistsError
 from src.contexts.shared.Infrastructure.persistence.mongo.PyMongoRepository import PyMongoRepository
+from src.contexts.shared.domain.CriteriaQueryMetadata import CriteriaQueryMetadata
 from src.contexts.shared.domain.criteria.Criteria import Criteria
 
 
@@ -27,10 +28,11 @@ class PyMongoUserRepository(PyMongoRepository, UserRepository):
     def get_collection_name(self):
         return self.__COLLECTION_NAME
 
-    async def find_by_criteria(self, criteria: Criteria) -> List[User]:
-        results = await super()._find_by_criteria(criteria)
+    async def find_by_criteria(self, criteria: Criteria) -> Tuple[List[User], Optional[CriteriaQueryMetadata]]:
+        results, count = await super()._find_by_criteria(criteria)
         entities = [User.create_from_primitives(result) for result in results]
-        return entities
+        metadata = CriteriaQueryMetadata(count)
+        return entities, metadata
 
     async def create_one(self, user: User) -> NoReturn:
         try:

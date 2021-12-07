@@ -20,7 +20,7 @@ class UsersGetController(BackofficeController):
 
     async def run(self, req: Request) -> JSONResponse:
         query_params = dict(req.query_params)
-        filters, order_by, _ = parse_dict_to_criteria(query_params)
-        query: Query = FindUsersByCriteriaQuery(filters, order_by)
+        filters, order_by, limit = parse_dict_to_criteria(query_params)
+        query: Query = FindUsersByCriteriaQuery(filters, order_by, limit)
         res: Response = await self.__query_bus.ask(query)
         return JSONResponse(status_code=HTTPStatus.OK, content=res.to_primitives())

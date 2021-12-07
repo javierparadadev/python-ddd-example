@@ -9,6 +9,6 @@ class UsersByCriteriaFinder:
         self.__user_repository = user_repository
 
     async def run(self, criteria: Criteria) -> BackofficeUsersResponse:
-        users = await self.__user_repository.find_by_criteria(criteria)
-        return BackofficeUsersResponse(users)
+        users, criteria_metadata = await self.__user_repository.find_by_criteria(criteria)
+        return BackofficeUsersResponse(users, criteria_metadata)
 
