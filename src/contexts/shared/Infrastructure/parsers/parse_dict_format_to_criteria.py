@@ -44,6 +44,7 @@ def parse_dict_to_criteria(query: Dict[str, Any]) -> Tuple[List[Filter], Optiona
                 upper_limit = 50
                 lower_limit = page * upper_limit
                 limit = Limit(LimitOffset(lower_limit), UpperLimit(upper_limit))
+                continue
             continue
 
         filter_field = FilterField(key)
