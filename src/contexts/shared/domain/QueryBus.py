@@ -1,6 +1,6 @@
 from abc import abstractmethod
 
-from src.contexts.shared.application.Response import Response
+from src.contexts.shared.domain.Response import Response
 from src.contexts.shared.domain.Interface import Interface
 from src.contexts.shared.domain.Query import Query
 

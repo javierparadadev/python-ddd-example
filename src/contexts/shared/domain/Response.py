@@ -1,9 +1,10 @@
-from typing import Dict, Any
-
-from src.contexts.shared.domain.Interface import Interface
+from abc import ABC, abstractmethod
 
 
-class Response(Interface):
+class Response(ABC):
 
-    def to_dict(self) -> Dict[str, Any]:
+    @abstractmethod
+    def to_primitives(self):
         raise NotImplementedError()
+
+

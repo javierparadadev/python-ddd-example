@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from src.contexts.backoffice.users.domain.entities.User import User
-from src.contexts.shared.application.Response import Response
+from src.contexts.shared.domain.Response import Response
 
 
 class BackofficeUsersResponse(Response):
