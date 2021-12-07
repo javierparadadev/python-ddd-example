@@ -1,4 +1,4 @@
-from typing import Optional, Dict, List, Union, Any
+from typing import Dict, List, Union, Any
 
 from src.contexts.photostore.photo.domain.domainevents.PhotoCreatedDomainEvent import PhotoCreatedDomainEvent
 from src.contexts.photostore.photo.domain.entities.PhotoId import PhotoId

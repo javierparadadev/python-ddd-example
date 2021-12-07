@@ -2,9 +2,9 @@ from typing import NoReturn
 
 from pymongo.errors import DuplicateKeyError
 
-from src.contexts.backoffice.users.domain.errors.UserAlreadyExistsError import UserAlreadyExistsError
 from src.contexts.photostore.photo.domain.PhotoRepository import PhotoRepository
 from src.contexts.photostore.photo.domain.entities.Photo import Photo
+from src.contexts.photostore.photo.domain.errors.PhotoAlreadyExistsError import PhotoAlreadyExistsError
 from src.contexts.shared.Infrastructure.persistence.minio.MinioRepository import MinioRepository
 
 
@@ -29,4 +29,4 @@ class MinioPhotoRepository(MinioRepository, PhotoRepository):
             )
             return photo
         except DuplicateKeyError as e:
-            raise UserAlreadyExistsError('User with ID <{}> already exists.'.format(photo.id.value()))
+            raise PhotoAlreadyExistsError('Photo with ID <{}> already exists.'.format(photo.id.value()))
