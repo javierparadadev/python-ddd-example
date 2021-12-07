@@ -11,7 +11,9 @@ def parse_criteria_to_mongo_query(criteria: Criteria) -> Tuple[Dict[str, Any], D
         raw_query[query_filter.field.value] = query_filter.value.value
 
     if criteria.order is not None:
-        options['sort'] = criteria.order.attribute.value
+        ord_param = criteria.order.attribute.value
+        ord_dir = 1 if criteria.order.attribute.value == 'asc' else -1
+        options['sort'] = [(ord_param, ord_dir)]
 
     if criteria.limit is not None:
         options['limit'] = criteria.limit.upper.value
