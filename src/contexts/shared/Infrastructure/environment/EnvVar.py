@@ -9,12 +9,18 @@ class EnvVar(Enum):
     # -------------------- BACKOFFICE -----------------------
     # -------------------------------------------------------
 
+    BACKOFFICE_SERVER_HOST     = 'backoffice.server.host'
+    BACKOFFICE_SERVER_PORT     = 'backoffice.server.port'
+
     BACKOFFICE_USER_MONGO_HOST = 'backoffice.user.mongo_host'
     BACKOFFICE_USER_MONGO_PORT = 'backoffice.user.mongo_port'
 
     # -------------------------------------------------------
     # -------------------- PHOTO STORE ----------------------
     # -------------------------------------------------------
+
+    PHOTOSTORE_SERVER_HOST            = 'photostore.server.host'
+    PHOTOSTORE_SERVER_PORT            = 'photostore.server.port'
 
     PHOTOSTORE_PHOTO_MINIO_HOST       = 'photostore.photo.minio_host'
     PHOTOSTORE_PHOTO_MINIO_PORT       = 'photostore.photo.minio_port'

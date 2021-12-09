@@ -1,9 +1,9 @@
 from fastapi import FastAPI, APIRouter
 
-from src.apps.backoffice.routes import register_routes
+from src.apps.photostore.routes import register_routes
 
 
-class BackofficeApp:
+class PhotoStoreApp:
 
     def __init__(self):
         self.__app: FastAPI = FastAPI()
