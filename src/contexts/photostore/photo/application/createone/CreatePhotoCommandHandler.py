@@ -1,9 +1,6 @@
 from typing import NoReturn
 
-from src.contexts.backoffice.users.application.createone.CreateUserCommand import CreatePhotoCommand
-from src.contexts.backoffice.users.application.createone.UserCreator import UserCreator
 from src.contexts.backoffice.users.domain.entities.UserId import UserId
-from src.contexts.backoffice.users.domain.entities.UserName import UserName
 from src.contexts.photostore.photo.application.createone.CreatePhotoCommand import CreatePhotoCommand
 from src.contexts.photostore.photo.application.createone.PhotoCreator import PhotoCreator
 from src.contexts.photostore.photo.domain.entities.PhotoId import PhotoId
