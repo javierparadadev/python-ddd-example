@@ -16,7 +16,7 @@ class User(AggregateRoot):
     @staticmethod
     def create(user_id: UserId, name: UserName):
         user = User(user_id, name)
-        event = UserCreatedDomainEvent(user.id.value())
+        event = UserCreatedDomainEvent(user.id.value(), user)
         user.record_event(event)
         return user
 

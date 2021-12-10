@@ -18,7 +18,7 @@ class Photo(AggregateRoot):
     @staticmethod
     def create(photo_id: PhotoId, name: PhotoName, user_id: UserId):
         photo = Photo(photo_id, name, user_id)
-        event = PhotoCreatedDomainEvent(photo.id.value())
+        event = PhotoCreatedDomainEvent(photo.id.value(), photo)
         photo.record_event(event)
         return photo
 

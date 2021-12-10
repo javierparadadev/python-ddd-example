@@ -7,7 +7,7 @@ from src.contexts.shared.domain.valueobj.AggregateRoot import AggregateRoot
 
 class UserCreatedDomainEvent(DomainEvent):
 
-    EVENT_TYPE = 'backoffice-user-created'
+    EVENT_TYPE = 'backoffice.user.created'
 
     def __init__(
             self,
