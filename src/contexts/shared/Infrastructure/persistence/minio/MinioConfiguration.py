@@ -10,12 +10,14 @@ class MinioConfiguration:
             access_key: str = None,
             secret_key: str = None,
             region: str = None,
+            secure: bool = False,
     ):
         self.host = host
         self.port = port
         self.access_key = access_key
         self.secret_key = secret_key
         self.region = region
+        self.secure = secure
 
     def create_client_from_config(self) -> Minio:
         return Minio(
@@ -23,4 +25,5 @@ class MinioConfiguration:
             access_key=self.access_key,
             secret_key=self.secret_key,
             region=self.region,
+            secure=self.secure,
         )

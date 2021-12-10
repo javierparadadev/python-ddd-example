@@ -1,7 +1,7 @@
 import io
 import json
 from abc import ABC, abstractmethod
-from typing import Any, Optional, NoReturn
+from typing import Any, Optional, NoReturn, List
 
 from minio import Minio
 
@@ -19,7 +19,7 @@ class MinioRepository(ABC):
     def get_directory_name(self):
         raise NotImplementedError()
 
-    def _find_one(
+    async def _find_one(
             self,
             obj_id: str,
             file_extension: str = None,
@@ -41,7 +41,7 @@ class MinioRepository(ABC):
             decoded_data = parse_callback(decoded_data)
         return decoded_data
 
-    def _create(
+    async def _create(
             self,
             obj_id: str,
             obj: Any,
@@ -64,6 +64,9 @@ class MinioRepository(ABC):
 
         if directory_name is None:
             directory_name = self.get_directory_name()
+
+        if directory_name is not None:
+            file_name = f'{directory_name}/{file_name}'
 
         bucket_name = self.get_bucket_name()
         encoded_content = content.encode('utf-8')

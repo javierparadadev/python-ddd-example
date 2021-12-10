@@ -1,6 +1,6 @@
 import uvicorn
 
-from src.apps.backoffice.BackofficeApp import BackofficeApp
+from src.apps.photostore.PtohoStoreApp import PhotoStoreApp
 from src.contexts.shared.Infrastructure.environment.EnvManager import EnvManager
 from src.contexts.shared.Infrastructure.environment.EnvVar import EnvVar
 
@@ -8,7 +8,7 @@ from src.contexts.shared.Infrastructure.environment.EnvVar import EnvVar
 class PhotoStoreServer:
 
     def __init__(self):
-        self.app = BackofficeApp()
+        self.app = PhotoStoreApp()
 
     def run(self):
         host = EnvManager.get(EnvVar.PHOTOSTORE_SERVER_HOST)

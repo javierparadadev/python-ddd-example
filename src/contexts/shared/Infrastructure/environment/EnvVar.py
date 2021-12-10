@@ -25,5 +25,5 @@ class EnvVar(Enum):
     PHOTOSTORE_PHOTO_MINIO_HOST       = 'photostore.photo.minio_host'
     PHOTOSTORE_PHOTO_MINIO_PORT       = 'photostore.photo.minio_port'
     PHOTOSTORE_PHOTO_MINIO_ACCESS_KEY = 'photostore.photo.minio_access_key'
-    PHOTOSTORE_PHOTO_MINIO_SECRET_KEY = 'backoffice.photo.minio_secret_key'
-    PHOTOSTORE_PHOTO_MINIO_REGION     = 'backoffice.photo.minio_region'
+    PHOTOSTORE_PHOTO_MINIO_SECRET_KEY = 'photostore.photo.minio_secret_key'
+    PHOTOSTORE_PHOTO_MINIO_REGION     = 'photostore.photo.minio_region'

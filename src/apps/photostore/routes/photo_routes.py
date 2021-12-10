@@ -3,10 +3,6 @@ import sys
 from dependency_injector.wiring import inject, Provide
 from fastapi import APIRouter
 
-from src.apps.backoffice.controllers.StatusGetController import StatusGetController
-from src.apps.backoffice.controllers.UsersGetController import UsersGetController
-from src.apps.backoffice.controllers.UserPostController import UserPostController
-from src.apps.backoffice.dependencies.BackofficeContainer import BackofficeContainer, backoffice_container
 from src.apps.photostore.controllers.PhotoPostController import PhotoPostController
 from src.apps.photostore.dependencies.PhotoStoreContainer import PhotoStoreContainer, photostore_container
 
