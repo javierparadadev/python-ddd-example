@@ -2,7 +2,7 @@ from dependency_injector import containers, providers
 
 from src.apps.backoffice.controllers.StatusGetController import StatusGetController
 from src.apps.backoffice.controllers.UsersGetController import UsersGetController
-from src.apps.backoffice.controllers.UsersPostController import UsersPostController
+from src.apps.backoffice.controllers.UserPostController import UserPostController
 from src.contexts.backoffice.users.application.createone.CreateUserCommandHandler import CreateUserCommandHandler
 from src.contexts.backoffice.users.application.findall.FindUsersByCriteriaQueryHandler import \
     FindUsersByCriteriaQueryHandler
@@ -52,7 +52,7 @@ class BackofficeContainer(containers.DeclarativeContainer):
 
     status_get_controller = providers.Singleton(StatusGetController)
     users_get_controller = providers.Singleton(UsersGetController, query_bus)
-    users_post_controller = providers.Singleton(UsersPostController, command_bus)
+    user_post_controller = providers.Singleton(UserPostController, command_bus)
 
 
 backoffice_container: BackofficeContainer = BackofficeContainer()

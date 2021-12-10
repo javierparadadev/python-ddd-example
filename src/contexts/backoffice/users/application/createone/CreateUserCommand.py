@@ -4,11 +4,12 @@ from src.contexts.shared.domain.Command import Command
 
 class CreatePhotoCommand(BaseObject, Command):
 
-    COMMAND_TYPE: str = 'createone-user'
+    COMMAND_TYPE: str = 'createone-photo'
 
-    def __init__(self, user_id: str, name: str):
-        self.id = user_id
+    def __init__(self, photo_id: str, name: str, user_id: str):
+        self.id = photo_id
         self.name = name
+        self.user_id = user_id
 
     def get_command_type_name(self) -> str:
         return self.COMMAND_TYPE

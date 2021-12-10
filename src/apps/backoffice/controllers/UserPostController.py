@@ -11,7 +11,7 @@ from src.contexts.shared.domain.CommandBus import CommandBus
 from src.contexts.shared.domain.errors.DomainError import DomainError
 
 
-class UsersPostController(BackofficeController):
+class UserPostController(BackofficeController):
 
     def __init__(
             self,
