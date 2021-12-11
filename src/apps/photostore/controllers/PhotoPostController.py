@@ -1,5 +1,6 @@
 from typing import Dict, Any
 
+from fastapi import File, Form, Body
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from http import HTTPStatus
@@ -20,8 +21,12 @@ class PhotoPostController(BackofficeController):
         self.__command_bus = command_bus
         self.__error_handler = JsonResponseErrorHandler()
 
-    async def run(self, req: Request) -> JSONResponse:
-        body: Dict[str, Any] = await req.json()
+    async def run(
+            self,
+            request: Request,
+    ) -> JSONResponse:
+        form = await request.form()
+        body = dict(form)
         command: CreatePhotoCommand = CreatePhotoCommand(body['id'], body['name'], body['user-id'])
         try:
             await self.__command_bus.dispatch(command)
