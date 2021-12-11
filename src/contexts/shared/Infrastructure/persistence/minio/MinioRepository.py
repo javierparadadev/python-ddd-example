@@ -1,4 +1,3 @@
-import base64
 import io
 import json
 from abc import ABC, abstractmethod
