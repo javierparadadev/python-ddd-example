@@ -3,6 +3,7 @@ from typing import NoReturn
 from src.contexts.backoffice.users.domain.entities.UserId import UserId
 from src.contexts.photostore.photo.application.createone.CreatePhotoCommand import CreatePhotoCommand
 from src.contexts.photostore.photo.application.createone.PhotoCreator import PhotoCreator
+from src.contexts.photostore.photo.domain.entities.PhotoFile import PhotoFile
 from src.contexts.photostore.photo.domain.entities.PhotoId import PhotoId
 from src.contexts.photostore.photo.domain.entities.PhotoName import PhotoName
 from src.contexts.shared.domain.BaseObject import BaseObject
@@ -23,7 +24,8 @@ class CreatePhotoCommandHandler(BaseObject, CommandHandler):
         photo_id: PhotoId = PhotoId(command.id)
         photo_name: PhotoName = PhotoName(command.name)
         user_id: UserId = UserId(command.user_id)
+        file: PhotoFile = PhotoFile(command.file)
 
-        await self.__creator.run(photo_id, photo_name, user_id)
+        await self.__creator.run(photo_id, photo_name, user_id, file)
 
 

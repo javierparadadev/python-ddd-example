@@ -1,3 +1,4 @@
+import base64
 import io
 import json
 from abc import ABC, abstractmethod
@@ -47,9 +48,10 @@ class MinioRepository(ABC):
             obj: Any,
             file_extension: str = None,
             directory_name: str = None,
+            codification: str = 'utf-8',
     ) -> NoReturn:
         content: Optional[str] = None
-        if isinstance(obj, str):
+        if isinstance(obj, str) or isinstance(obj, bytes):
             content = obj
         if isinstance(obj, int) or isinstance(obj, float) or isinstance(obj, int):
             content = str(obj)
@@ -68,7 +70,10 @@ class MinioRepository(ABC):
         if directory_name is not None:
             file_name = f'{directory_name}/{file_name}'
 
-        bucket_name = self.get_bucket_name()
-        encoded_content = content.encode('utf-8')
+        encoded_content = obj
+        if isinstance(obj, str):
+            encoded_content = content.encode(codification)
         to_stream_content = io.BytesIO(encoded_content)
+
+        bucket_name = self.get_bucket_name()
         self.__client.put_object(bucket_name, file_name, to_stream_content, len(encoded_content))

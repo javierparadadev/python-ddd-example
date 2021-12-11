@@ -21,8 +21,9 @@ class MinioPhotoRepository(MinioRepository, PhotoRepository):
         try:
             photo = await super()._create(
                 obj_id=photo.id.value(),
-                obj={},
+                obj=photo.file.value(),
                 file_extension='jpg',
+                codification='base64',
             )
             return photo
         except Exception as e:
