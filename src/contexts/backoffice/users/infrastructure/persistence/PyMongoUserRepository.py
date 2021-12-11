@@ -14,7 +14,7 @@ from src.contexts.shared.domain.criteria.Criteria import Criteria
 class PyMongoUserRepository(PyMongoRepository, UserRepository):
 
     __COLLECTION_NAME = 'users'
-    __DATABASE_NAME = 'backoffice'
+    __DATABASE_NAME = 'python-ddd-example'
 
     def __init__(self, client: MongoClient):
         super().__init__(client)

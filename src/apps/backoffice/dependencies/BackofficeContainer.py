@@ -8,7 +8,7 @@ from src.contexts.backoffice.users.application.findall.FindUsersByCriteriaQueryH
     FindUsersByCriteriaQueryHandler
 from src.contexts.backoffice.users.application.createone.UserCreator import UserCreator
 from src.contexts.backoffice.users.application.findall.UsersByCriteriaFinder import UsersByCriteriaFinder
-from src.contexts.backoffice.users.infrastructure.persistence.PyMongoBackofficeUserRepository import \
+from src.contexts.backoffice.users.infrastructure.persistence.PyMongoUserRepository import \
     PyMongoUserRepository
 from src.contexts.backoffice.users.infrastructure.persistence.config.PyMongoUserConfigFactory import PyMongoUserConfigFactory
 from src.contexts.shared.Infrastructure.commandbus.InMemoryCommandBus import InMemoryCommandBus
