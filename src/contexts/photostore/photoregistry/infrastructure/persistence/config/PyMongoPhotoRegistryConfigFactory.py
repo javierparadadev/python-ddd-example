@@ -8,7 +8,7 @@ class PyMongoPhotoRegistryConfigFactory:
     @staticmethod
     def create() -> PyMongoConfiguration:
         config = PyMongoConfiguration(
-            EnvManager.get(EnvVar.BACKOFFICE_USER_MONGO_HOST),
-            EnvManager.get(EnvVar.BACKOFFICE_USER_MONGO_PORT, parser=int),
+            EnvManager.get(EnvVar.SHARED_PHOTO_REGISTRY_MONGO_HOST),
+            EnvManager.get(EnvVar.SHARED_PHOTO_REGISTRY_MONGO_PORT, parser=int),
         )
         return config

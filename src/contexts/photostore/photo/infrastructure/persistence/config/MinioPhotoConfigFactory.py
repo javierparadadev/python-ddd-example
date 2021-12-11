@@ -10,11 +10,11 @@ class MinioPhotoConfigFactory:
     @staticmethod
     def create() -> MinioConfiguration:
         config = MinioConfiguration(
-            host=EnvManager.get(EnvVar.PHOTOSTORE_PHOTO_MINIO_HOST),
-            port=EnvManager.get(EnvVar.PHOTOSTORE_PHOTO_MINIO_PORT, parser=int),
-            access_key=EnvManager.get(EnvVar.PHOTOSTORE_PHOTO_MINIO_ACCESS_KEY),
-            secret_key=EnvManager.get(EnvVar.PHOTOSTORE_PHOTO_MINIO_SECRET_KEY),
-            region=EnvManager.get(EnvVar.PHOTOSTORE_PHOTO_MINIO_REGION),
-            secure=EnvManager.get(EnvVar.PHOTOSTORE_PHOTO_MINIO_SECURE, parser=json.loads),
+            host=EnvManager.get(EnvVar.SHARED_PHOTO_MINIO_HOST),
+            port=EnvManager.get(EnvVar.SHARED_PHOTO_MINIO_PORT, parser=int),
+            access_key=EnvManager.get(EnvVar.SHARED_PHOTO_MINIO_ACCESS_KEY),
+            secret_key=EnvManager.get(EnvVar.SHARED_PHOTO_MINIO_SECRET_KEY),
+            region=EnvManager.get(EnvVar.SHARED_PHOTO_MINIO_REGION),
+            secure=EnvManager.get(EnvVar.SHARED_PHOTO_MINIO_SECURE, parser=json.loads),
         )
         return config
