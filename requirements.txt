@@ -13,3 +13,4 @@ starlette==0.16.0
 typing-extensions==3.10.0.2
 uvicorn==0.15.0
 minio==7.1.1
+deepfinder==0.0.6
