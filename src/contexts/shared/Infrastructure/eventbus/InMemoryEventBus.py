@@ -8,8 +8,14 @@ from src.contexts.shared.domain.EventSubscriber import EventSubscriber
 
 class InMemoryEventBus(BaseObject, EventBus):
 
-    def __init__(self):
-        self.__subscriptions: Dict[str, List[EventSubscriber]] = {}
+    def __init__(self, *subscribers: EventSubscriber):
+        event_subscriber_mapping: Dict[str, List[EventSubscriber]] = {}
+        for subscriber in subscribers:
+            for event in subscriber.subscribed_to():
+                if event not in event_subscriber_mapping:
+                    event_subscriber_mapping[event] = []
+                event_subscriber_mapping[event].append(subscriber)
+        self.__subscriptions = event_subscriber_mapping
 
     def start(self):
         pass
