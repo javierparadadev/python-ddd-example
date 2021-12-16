@@ -4,7 +4,7 @@ from typing import Any
 class ValueObject:
 
     def __init__(self, value: Any):
-        self.__value = value
+        self._value = value
 
     def value(self):
-        return self.__value
+        return self._value
