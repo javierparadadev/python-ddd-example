@@ -3,7 +3,7 @@ asgiref==3.4.1
 certifi==2021.10.8
 click==8.0.3
 deepcomparer==0.1.0
-deepfinder==1.0.0
+deepfinder==1.2.0
 dependency-injector==4.37.0
 fastapi==0.70.0
 h11==0.12.0
