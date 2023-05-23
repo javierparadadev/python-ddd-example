@@ -1,6 +1,6 @@
 anyio==3.3.4
 asgiref==3.4.1
-certifi==2021.10.8
+certifi==2022.12.7
 click==8.0.3
 deepcomparer==0.1.0
 deepfinder==1.2.0
