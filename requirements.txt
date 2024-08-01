@@ -1,13 +1,13 @@
 anyio==3.6.2
 asgiref==3.4.1
-certifi==2023.7.22
+certifi==2024.7.4
 click==8.0.3
 deepcomparer==0.1.0
 deepfinder==1.2.0
 dependency-injector==4.37.0
 fastapi==0.95.2
 h11==0.12.0
-idna==3.3
+idna==3.7
 minio==7.1.1
 pydantic==1.10.7
 pymongo==4.6.3
@@ -16,5 +16,5 @@ six==1.16.0
 sniffio==1.2.0
 starlette==0.27.0
 typing_extensions==4.6.0
-urllib3==1.26.18
+urllib3==1.26.19
 uvicorn==0.15.0
